@@ -107,7 +107,7 @@
         });
         Telegram.WebApp.MainButton.onClick(function () {
             Telegram.WebApp.showAlert('Main Button was clicked')
-        });	
+        });
         Telegram.WebApp.MainButton.show();
 
         // Function to call showPopup API
@@ -137,7 +137,7 @@
 
         function setViewportData() {
             var sizeEl = document.getElementById('viewport-params-size');
-            sizeEl.innerText = 'width: ' + window.innerWidth + ' x ' + 
+            sizeEl.innerText = 'width: ' + window.innerWidth + ' x ' +
                 'height: ' + Telegram.WebApp.viewportStableHeight;
 
             var expandEl = document.querySelector('#viewport-params-expand');
@@ -158,5 +158,37 @@
     <!-- Eruda is console for mobile browsers -->
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init();</script>
+
+    <div class="container">
+        <h1>Passkey Tutorial</h1>
+        <div id="message"></div>
+
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Enter username">
+            <button id="registerButton">Register</button>
+            <button id="loginButton">Login</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.es5.umd.min.js"></script>
+    <script>
+        document.getElementById('registerButton').addEventListener('click', register);
+        document.getElementById('loginButton').addEventListener('click', login);
+
+        async function register() {
+            const options = {};
+            const attestationResponse = await SimpleWebAuthnBrowser.startRegistration(options);
+
+            console.log(attestationResponse);
+        }
+
+        async function login() {
+            const options = {};
+            const attestationResponse = await SimpleWebAuthnBrowser.startRegistration(options);
+
+            console.log(attestationResponse);
+        }
+
+    </script>
+
 </body>
 </html>
