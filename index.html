@@ -175,7 +175,20 @@
         document.getElementById('loginButton').addEventListener('click', login);
 
         async function register() {
-            const options = {};
+            const options = {
+                rp: {
+                    id: "https://alwaysbcoding.github.io/TMA-vanilla/",
+                    name: "Crypto Chameleon"
+                },
+                user: {
+                    name: "Some User",
+                    displayName: "JDL",
+                    id: new ArrayBuffer(32)
+                },
+                challenge: "aHR0cHM6Ly9hbHdheXNiY29kaW5nLmdpdGh1Yi5pby9UTUEtdmFuaWxsYS8=",
+                pubKeyCredParams: []
+            };
+
             const attestationResponse = await SimpleWebAuthnBrowser.startRegistration(options);
 
             console.log(attestationResponse);
